@@ -12,8 +12,6 @@ exports.config = {
             },
             order: {
                 before: [
-                    'node_modules/jquery/dist/*.js',
-                    'node_modules/angular/*.js',
                     'public/js/app.js',
                     'public/js/**/*.md.js',
                     'public/js/components/**/*.js'
@@ -29,7 +27,7 @@ exports.config = {
     },
     npm: {
         enabled: true,
-        compilers: ['angular', 'angular-ui-router', 'angular-cookies', 'angular-materialize', 'jquery']
+        compilers: ['angular', 'angular-ui-router']
     },
     conventions: {
         assets: /static[\\/]/,
