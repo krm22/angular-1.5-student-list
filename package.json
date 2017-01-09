@@ -1,0 +1,28 @@
+{
+  "name": "exam_training",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exam-app.js",
+  "scripts": {
+  "start": "NODE_ENV=production node blog-app",
+  "dev": "brunch watch --server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.6",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+  "auto-reload-brunch": "^2.7.1",
+  "babel-brunch": "^6.0.6",
+  "brunch": "^2.9.1",
+  "clean-css-brunch": "^2.0.0",
+  "css-brunch": "^2.6.1",
+  "javascript-brunch": "^2.0.0",
+  "sass-brunch": "^2.7.0"
+ }
+}
