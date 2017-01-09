@@ -1,9 +1,9 @@
 'use strict'
-let StudentController = require('../controllers/PromotionController')
+let PromotionController = require('../controllers/PromotionController')
 
 module.exports = (app) => {
     // Create new controller
-    let ctrl = new StudentController();
+    let ctrl = new PromotionController();
 
     app.get('/students', (req, res, next) => {
         return ctrl.find(req, res, next)

@@ -5,15 +5,16 @@
         controller: ['studentsService', function(studentsService) {
 
 
+            studentsService.get().then((res) => {
+                        this.students = res.data
+                    })
+
             this.add = () => {
                 studentsService.add(this.student).then((res) => {
                     // when this request receive response we change state to app.blog.list (redirection to list)
                     $state.go('student.list')
                 })
             }
-
-
-
 
             this.save = () => {
                 // Call save method form PostsService with post
