@@ -1,7 +1,7 @@
 ((app) => {
     'use strict'
     app.component('studentList', {
-        templateUrl: 'js/components/students/studentList/studentList.html',
+        templateUrl: 'js/components/studentsList/studentsList.html',
         controller: ['studentsService', function(studentsService) {
 
 

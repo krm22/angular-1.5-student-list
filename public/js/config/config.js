@@ -1,20 +1,20 @@
 ((app) => {
     'use strict'
-    app.config(['$stateProvider', ($stateProvider, $urlRouterProvider, $locationProvider) => {
-
+    app.config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider, $locationProvider) => {
+      $urlRouterProvider.otherwise('/');
         $stateProvider
-            .state('app', {
-                url: '/students',
+            .state('student', {
+                url: '',
                 abstract: true,
                 templateUrl: 'js/components/students/students.html'
             })
-            .state('app.student.list', {
+            .state('student.list', {
                 url: '/',
                 template: '<student-list></student-list>'
             })
-            .state('app.student.item', {
+            .state('student.item', {
                 url: '/:id',
                 template: '<student-item></student-item>'
             })
     }])
-})(require('angular').module('app.students', []))
+})(require('angular').module('app.config'))

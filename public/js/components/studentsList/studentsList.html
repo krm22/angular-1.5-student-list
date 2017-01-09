@@ -1,0 +1,36 @@
+<div class="container">
+    <form class="row" ng-submit="submit()">
+        <div class="form-group col-md-3">
+            <input type="text" class="form-control" placeholder="Nom" ng-model="student.nom">
+        </div>
+        <div class="form-group col-md-3">
+            <input type="text" class="form-control" placeholder="Prenom" ng-model="student.Prenom">
+        </div>
+        <div class="form-group col-md-3">
+            <input type="text" class="form-control" placeholder="Age" ng-model="student.age">
+        </div>
+        <div class="form-group col-md-2">
+            <button type="submit" class="form-control" name="button">Add</button>
+        </div>
+    </form>
+
+    <table class="table table-stripped">
+        <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th colspan="2">Age</th>
+        </tr>
+        <tr ng-repeat="student in students">
+            <td>{{$index}}</td>
+            <td>{{student.lastname}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.age}}</td>
+            <td ng-class="{'teenager':student.age<27, 'older': student.age>=27}">{{student.age}}</td>
+            <td>
+                <button type="button" name="button" ng-click="delete($index)">Delete</button>
+            </td>
+        </tr>
+
+    </table>
+</div>

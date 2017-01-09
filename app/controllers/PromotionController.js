@@ -2,9 +2,9 @@
 // Require parent class
 let Controller = require('./Controller');
 // Require model (schema) use with this controller
-const Promotion = require('../models/promotion')
+const Promotion = require('../models/promo')
 
-class PostsController extends Controller {
+class PromotionController extends Controller {
 
     constructor() {
       // Call parent constructor with model param
@@ -13,4 +13,4 @@ class PostsController extends Controller {
 
 }
 
-module.exports = PostsController
+module.exports = PromotionController
