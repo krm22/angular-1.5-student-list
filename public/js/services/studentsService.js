@@ -2,7 +2,7 @@
     'use strict'
     app.service('studentsService', function($http) {
         return {
-            get() {
+            get(){
                 // HTTP Request method GET to our express API
                 return $http.get('/api/students')
             },
@@ -13,15 +13,18 @@
             save(student) {
                 if (student._id) {
                     // HTTP Request method PUT (update) with param and data (post) to our express API
-                    return $http.put('/api/students/' + post._id, post)
+                    return $http.put('/api/students/' +  student._id, student)
                 } else {
                     // HTTP Request method POST (create) with data (post) to our express API
-                    return $http.post('/api/students', post)
+                    return $http.post('/api/students', student)
                 }
             },
-            delete(student) {
+            edit(student) {
+                return $http.put('/api/students/' + student._id, student)
+            },
+            delete(student){
                 // HTTP Request method DELETE (delete) with param (post id) to our express API
-                return $http.delete('/api/students/' + post._id)
+                return $http.delete('/api/students/' + student._id)
             }
         }
     })

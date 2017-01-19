@@ -2,39 +2,61 @@
     'use strict'
     app.component('studentList', {
         templateUrl: 'js/components/studentsList/studentsList.html',
-        controller: ['studentsService', function(studentsService) {
-
+        controller: ['studentsService', '$state', function(studentsService, $state) {
 
             studentsService.get().then((res) => {
-                        this.students = res.data
-                    })
+                this.students = res.data
+            })
 
             this.add = () => {
-                studentsService.add(this.student).then((res) => {
-                    // when this request receive response we change state to app.blog.list (redirection to list)
-                    $state.go('student.list')
+                studentsService.save(this.student).then((res) => {
+                    this.students.push(res.data)
                 })
             }
 
             this.save = () => {
-                // Call save method form PostsService with post
                 studentsService.save(this.student).then((res) => {
-                    // Change editMode value to false
                     this.editMode = false
                     if (!this.student._id) {
-                        // if it's new post (when post._id doesn't exist) we affect to post variable response data (post created)
                         this.student = res.data
                     }
                 })
             }
 
-            this.delete = () => {
-                // Call delete method form PostsService with post
-                studentsService.delete(this.student).then((res) => {
-                    // when this request receive response we change state to app.blog.list (redirection to list)
+              this.delete = (student, index) => {
+                  studentsService.delete(student).then((res) => {
+                    this.students.splice(index, 1)
                     $state.go('student.list')
                 })
             }
+
+             this.edit = (student) => {
+              if (student.editMode) {
+                  studentsService.edit(student).then((res) => {
+                      student.editMode = false
+                  })
+              } else {
+                  student.editMode = true
+              }
+            }
+
+             this.cancel = (student, index) => {
+                this.students[index] = [student._id]
+            }
+
         }]
     })
 })(require('angular').module('app.students'))
+
+
+/*   <this.edit = (student) => {
+                if (student.editMode) {
+                    studentsService.edit(student).then((res) => {
+                        student.editMode = false
+                    })
+                } else {
+                    _previous[student._id] = angular.copy(student) // on fait une copie du student dans un objet previous et avec comme valeur tout l'bjet
+                    student.editMode = true
+                }
+            }
+*/

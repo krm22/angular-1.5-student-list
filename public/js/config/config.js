@@ -1,6 +1,6 @@
 ((app) => {
     'use strict'
-    app.config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider, $locationProvider) => {
+    app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider) => {
       $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('student', {
