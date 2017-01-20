@@ -4,22 +4,21 @@
         templateUrl: 'js/components/studentsList/studentsList.html',
         controller: ['studentsService', '$state', function(studentsService, $state) {
 
+          let _previous = {}
+
+
             studentsService.get().then((res) => {
                 this.students = res.data
+            })
+
+            studentsService.getPromos().then((res) => {
+                this.promos = res.data
             })
 
             this.add = () => {
                 studentsService.save(this.student).then((res) => {
                     this.students.push(res.data)
-                })
-            }
-
-            this.save = () => {
-                studentsService.save(this.student).then((res) => {
-                    this.editMode = false
-                    if (!this.student._id) {
-                        this.student = res.data
-                    }
+                    this.student = {}
                 })
             }
 
@@ -30,14 +29,15 @@
                 })
             }
 
-             this.edit = (student) => {
-              if (student.editMode) {
-                  studentsService.edit(student).then((res) => {
-                      student.editMode = false
-                  })
-              } else {
-                  student.editMode = true
-              }
+              this.edit = (student) => {
+                if (student.editMode) {
+                    studentsService.edit(student).then((res) => {
+                        student.editMode = false
+                    })
+                } else {
+                  _previous[student._id] = angular.copy(student)
+                    student.editMode = true
+                }
             }
 
              this.cancel = (student, index) => {
@@ -47,16 +47,3 @@
         }]
     })
 })(require('angular').module('app.students'))
-
-
-/*   <this.edit = (student) => {
-                if (student.editMode) {
-                    studentsService.edit(student).then((res) => {
-                        student.editMode = false
-                    })
-                } else {
-                    _previous[student._id] = angular.copy(student) // on fait une copie du student dans un objet previous et avec comme valeur tout l'bjet
-                    student.editMode = true
-                }
-            }
-*/

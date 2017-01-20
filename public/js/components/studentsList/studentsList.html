@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="row" ng-submit="$ctrl.add()">
+    <form class="row" ng-submit="$ctrl.add($ctrl.student)">
 
         <div class="form-group col-md-2">
             <input type="text" class="form-control" placeholder="First Name" ng-model="$ctrl.student.name">
@@ -13,8 +13,8 @@
             <input type="text" class="form-control" placeholder="Age" ng-model="$ctrl.student.age">
         </div>
 
-            <select class="form-group col-md-2" ng-model="$ctrl.student.promotions">
-                <option ng-repeat="promo in $ctrl.promotions" value="{{promo._id}}">{{promotion.name}}</option>
+            <select class="form-group col-md-2" ng-model="$ctrl.student.promotions.name">
+                <option ng-repeat="promo in $ctrl.promotions" value="{{promotions}}">{{student.promotions.name}}</option>
             </select>
 
         <div class="form-group col-md-2">
@@ -24,25 +24,39 @@
     <table class="table table-stripped">
         <tr>
             <th>#</th>
-            <th>Nom</th>
-            <th>Prenom</th>
+            <th>First Name</th>
+            <th>Second Name</th>
             <th>Age</th>
             <th>Promotion</th>
         </tr>
         <tr ng-repeat="student in $ctrl.students">
             <td>{{$index}}</td>
-            <td>{{student.name}}</td>
-            <td>{{student.lastname}}</td>
-            <td>{{student.age}}</td>
-            <td>{{student.promotion.name}}</td>
-              <td ng-class="{'teenager':student.age<27, 'older': student.age>=27}">{{student.age}}</td>
             <td>
-                <button type="button" name="button" ng-click="$ctrl.delete(student, $index)">Delete</button>
+              <span ng-if="!student.editMode">{{student.name}}</span>
+              <input ng-if="student.editMode" type="text" name="name" ng-model="student.name">
             </td>
 
             <td>
-              <button type="button" name="button" ng-click="$ctrl.edit(student, $index)">{{ (student.editMode ? 'Validate' : 'Edit')}}</button>
-              <button type="button" name="button" ng-if="student.editMode" ng-click="$ctrl.cancel(student, $index)"> Cancel </button>
+              <span ng-if="!student.editMode">{{student.lastname}}</span>
+              <input ng-if="student.editMode" type="text" name="lastname" ng-model="student.lastname">
+            </td>
+
+            <td>
+              <span ng-if="!student.editMode">{{student.age}}</span>
+              <input ng-if="student.editMode" type="text" name="age" ng-model="student.age">
+            </td>
+
+            <td>
+              <span ng-if="!student.editMode">{{student.promotion.name}}</span>
+              <input ng-if="student.editMode" type="text" name="promotion" ng-model="student.promotion.name">
+            </td>
+
+    <!-- <td ng-class="{'teenager':student.age<27, 'older': student.age>=27}">{{student.age}}</td>-->
+
+              <td>
+                  <button type="button" name="button" ng-click="$ctrl.delete(student, $index)">Delete</button>
+                  <button type="button" name="button" ng-click="$ctrl.edit(student)">{{ (student.editMode ? 'Validate' : 'Edit')}}</button>
+                  <button type="button" name="button" ng-if="student.editMode" ng-click="$ctrl.cancel(student, $index)"> Cancel </button>
             </td>
         </tr>
     </table>
