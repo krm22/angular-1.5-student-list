@@ -2,6 +2,7 @@
     'use strict'
     app.service('studentsService', function($http) {
         return {
+
             get(){
                 // HTTP Request method GET to our express API
                 return $http.get('/api/students')

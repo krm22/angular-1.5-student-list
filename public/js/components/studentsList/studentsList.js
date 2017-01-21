@@ -13,7 +13,7 @@
             })
 
             studentsService.getPromos().then((res) => {
-                this.promos = res.data
+                this.promotion = res.data
             })
 
 
@@ -47,15 +47,6 @@
                 this.students[index] = [student._id]
             }
 
-            this.promotion ={
-                Name:''
-            }
-
-            this.promotion.name = studentsService.getPromoName(
-                  studentsService.getPromoName(this.promotion.name).then((res)=>{
-                        this.promotions.name = res.data
-                  })
-            );
         }]
     })
 })(require('angular').module('app.students'))

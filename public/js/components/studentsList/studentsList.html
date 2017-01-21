@@ -17,14 +17,8 @@
                 <option value="{{promotions}}">{$ctrl.promotions.name}}</option>
             </select>-->
 
-            <select ng-model="customer.Country"
-                    ng-options="obj.id as obj.country for obj in countries"
-                    ng-change="getCountryStates()"
-                    class="form-group col-md-2"
-                    ng-required="true"
-                    id=""
-                    >
-                <option  value="{{promotion_.id}}">{{$ctrl.promotion.name}}</option>
+            <select ng-model="$ctrl.promotions" class="form-group col-md-2">
+                <option ng-repeat="promotion in $ctrl.promotion" value="{{promotion_.id}}">{{$ctrl.promotion.name}}</option>
             </select>
 
         <div class="form-group col-md-2">
