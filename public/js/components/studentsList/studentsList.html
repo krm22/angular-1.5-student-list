@@ -17,8 +17,8 @@
                 <option value="{{promotions}}">{$ctrl.promotions.name}}</option>
             </select>-->
 
-            <select ng-model="$ctrl.promotions" class="form-group col-md-2">
-                <option ng-repeat="promotion in $ctrl.promotion" value="{{promotion_.id}}">{{$ctrl.promotion.name}}</option>
+            <select ng-model="$ctrl.student.promotion" class="form-group col-md-2">
+                <option ng-repeat="promotion in $ctrl.student.promotion" value="{{student.promotion_.id}}">{{student.promotion.name}}</option>
             </select>
 
         <div class="form-group col-md-2">
@@ -52,13 +52,9 @@
             </td>
 
              <td>
-                <select class="col-md-8"
-                    placeholder="Select a Promotion"
-                    ng-model="promotion"
-                    ng-options="promtion.name for option in options">
-
-                  <option value="">{{promotion.name}}</option>
-                  <option value="">{{promotion.name}}</option>
+                <select class="col-md-8" ng-model="$ctrl.student.promotion">
+                    <option ng-repeat="promotion in $ctrl.promotion" value="{{student.promotion_.id}}">{{promotion.name}}</option>
+                    <option value="">{{promotion.name}}</option>
               </select>
             </td>
 
