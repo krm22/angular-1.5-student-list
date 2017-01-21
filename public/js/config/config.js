@@ -10,11 +10,11 @@
             })
             .state('student.list', {
                 url: '/',
-                template: '<student-list></student-list>'
+                template: '<student-list><navbar></navbar></student-list>'
             })
-            .state('student.item', {
-                url: '/:id',
-                template: '<student-item></student-item>'
+            .state('student.promotion',{
+              url:'/promotions',
+              template:'<promotion></promotion>'
             })
     }])
 })(require('angular').module('app.config'))

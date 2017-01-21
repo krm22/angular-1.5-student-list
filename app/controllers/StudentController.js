@@ -21,5 +21,4 @@ class StudentController extends Controller {
         })
     }
 }
-
 module.exports = StudentController

@@ -7,6 +7,7 @@
           let _previous = {}
 
 
+
             studentsService.get().then((res) => {
                 this.students = res.data
             })
@@ -14,6 +15,8 @@
             studentsService.getPromos().then((res) => {
                 this.promos = res.data
             })
+
+
 
             this.add = () => {
                 studentsService.save(this.student).then((res) => {
@@ -44,6 +47,15 @@
                 this.students[index] = [student._id]
             }
 
+            this.promotion ={
+                Name:''
+            }
+
+            this.promotion.name = studentsService.getPromoName(
+                  studentsService.getPromoName(this.promotion.name).then((res)=>{
+                        this.promotions.name = res.data
+                  })
+            );
         }]
     })
 })(require('angular').module('app.students'))

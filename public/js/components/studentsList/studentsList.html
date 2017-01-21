@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container container1">
     <form class="row" ng-submit="$ctrl.add($ctrl.student)">
 
         <div class="form-group col-md-2">
@@ -13,14 +13,25 @@
             <input type="text" class="form-control" placeholder="Age" ng-model="$ctrl.student.age">
         </div>
 
-            <select class="form-group col-md-2" ng-model="$ctrl.student.promotions.name">
-                <option ng-repeat="promo in $ctrl.promotions" value="{{promotions}}">{{student.promotions.name}}</option>
+        <!--    <select class="form-group col-md-2" required="" ng-options="promtion.name for a promo in promotions"  ng-model="selected" >
+                <option value="{{promotions}}">{$ctrl.promotions.name}}</option>
+            </select>-->
+
+            <select ng-model="customer.Country"
+                    ng-options="obj.id as obj.country for obj in countries"
+                    ng-change="getCountryStates()"
+                    class="form-group col-md-2"
+                    ng-required="true"
+                    id=""
+                    >
+                <option  value="{{promotion_.id}}">{{$ctrl.promotion.name}}</option>
             </select>
 
         <div class="form-group col-md-2">
             <button type="submit" class="form-control" name="button">Add</button>
         </div>
   </form>
+
     <table class="table table-stripped">
         <tr>
             <th>#</th>
@@ -46,12 +57,19 @@
               <input ng-if="student.editMode" type="text" name="age" ng-model="student.age">
             </td>
 
-            <td>
-              <span ng-if="!student.editMode">{{student.promotion.name}}</span>
-              <input ng-if="student.editMode" type="text" name="promotion" ng-model="student.promotion.name">
+             <td>
+                <select class="col-md-8"
+                    placeholder="Select a Promotion"
+                    ng-model="promotion"
+                    ng-options="promtion.name for option in options">
+
+                  <option value="">{{promotion.name}}</option>
+                  <option value="">{{promotion.name}}</option>
+              </select>
             </td>
 
     <!-- <td ng-class="{'teenager':student.age<27, 'older': student.age>=27}">{{student.age}}</td>-->
+
 
               <td>
                   <button type="button" name="button" ng-click="$ctrl.delete(student, $index)">Delete</button>
@@ -60,4 +78,5 @@
             </td>
         </tr>
     </table>
+
 </div>
