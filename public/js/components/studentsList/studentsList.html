@@ -13,13 +13,9 @@
             <input type="text" class="form-control" placeholder="Age" ng-model="$ctrl.student.age">
         </div>
 
-        <!--    <select class="form-group col-md-2" required="" ng-options="promtion.name for a promo in promotions"  ng-model="selected" >
-                <option value="{{promotions}}">{$ctrl.promotions.name}}</option>
-            </select>-->
-
-            <select ng-model="$ctrl.student.promotion" class="form-group col-md-2">
-                <option ng-repeat="promotion in $ctrl.student.promotion" value="{{student.promotion_.id}}">{{student.promotion.name}}</option>
-            </select>
+      <select ng-model="$ctrl.student.promotion" class="form-group col-md-2">
+                <option ng-repeat="promotion in $ctrl.promotion" value="{{student.promotion_.id}}">{{promotion.name}}</option>
+      </select>
 
         <div class="form-group col-md-2">
             <button type="submit" class="form-control" name="button">Add</button>
@@ -51,10 +47,12 @@
               <input ng-if="student.editMode" type="text" name="age" ng-model="student.age">
             </td>
 
+
              <td>
-                <select class="col-md-8" ng-model="$ctrl.student.promotion">
-                    <option ng-repeat="promotion in $ctrl.promotion" value="{{student.promotion_.id}}">{{promotion.name}}</option>
-                    <option value="">{{promotion.name}}</option>
+               <span ng-if="!student.editMode">{{student.promotion}}</span>
+                <select ng-if="student.editMode" class="col-md-8" ng-model="$ctrl.student.promotion">
+                    <option ng-repeat="promotion in $ctrl.promotion" value="{{student.promotion.name}}">{{promotion.name}}</option>
+                    <option value="">{{student.promotion.name}}</option>
               </select>
             </td>
 

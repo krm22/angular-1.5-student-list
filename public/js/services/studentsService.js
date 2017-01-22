@@ -7,7 +7,12 @@
                 // HTTP Request method GET to our express API
                 return $http.get('/api/students')
             },
+            gitUser(){
+               return $http.get('https://api.github.com/').then(function(res){
+                  console.log(res)
+               })
 
+            },
             getPromos() {
                return $http.get('/api/promotions')
             },
