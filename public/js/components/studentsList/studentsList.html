@@ -36,6 +36,7 @@
             <th>Promotion</th>
             <th>Gihub Username</th>
             <th>Gihub Avatar</th>
+            <th>Edit/Delete</th>
         </tr>
 
         <tr ng-repeat="student in $ctrl.students">
@@ -72,7 +73,7 @@
             </td>
 
           <td>
-            <span ng-if="!student.editMode"><img ng-src="{{student.github.avatar_url}}" alt="" class="gitAvatar"></span>
+            <span ng-if="!student.editMode"><a ng-href="{{student.github.html_url}}"><img ng-src="{{student.github.avatar_url}}" alt="" class="gitAvatar"></a></span>
           </td>
     <!-- <td ng-class="{'teenager':student.age<27, 'older': student.age>=27}">{{student.age}}</td>-->
 
