@@ -13,6 +13,10 @@
             <input type="text" class="form-control" placeholder="Age" ng-model="$ctrl.student.age">
         </div>
 
+        <div class="form-group col-md-2">
+            <input type="text" class="form-control" placeholder="Github Psuedo" ng-model="$ctrl.student.gitpseudo">
+        </div>
+
       <select ng-model="$ctrl.student.promotion" class="form-group col-md-2">
                 <option ng-repeat="promotion in $ctrl.promotion" value="{{promotion._id}}">{{promotion.name}}</option>
                 <option value="">Select A Promotion</option>
@@ -30,9 +34,14 @@
             <th>Second Name</th>
             <th>Age</th>
             <th>Promotion</th>
+            <th>Gihub Username</th>
+            <th>Gihub Avatar</th>
         </tr>
+
         <tr ng-repeat="student in $ctrl.students">
+
             <td>{{$index}}</td>
+
             <td>
               <span ng-if="!student.editMode">{{student.name}}</span>
               <input ng-if="student.editMode" type="text" name="name" ng-model="student.name">
@@ -49,14 +58,22 @@
             </td>
 
 
-             <td>
+            <td>
                <span ng-if="!student.editMode">{{student.promotion.name}}</span>
                 <select ng-if="student.editMode" class="col-md-8" ng-model="student.promotion">
                     <option ng-repeat="promotion in $ctrl.promotion" value="{{promotion._id}}">{{promotion.name}}</option>
                     <option value="">Select a Promotion</option>
-              </select>
+                </select>
             </td>
 
+            <td>
+              <span ng-if="!student.editMode">{{student.gitpseudo}}</span>
+              <input ng-if="student.editMode" type="text" name="age" ng-model="student.gitpseudo">
+            </td>
+
+          <td>
+            <span ng-if="!student.editMode"><img ng-src="{{student.github.avatar_url}}" alt="" class="gitAvatar"></span>
+          </td>
     <!-- <td ng-class="{'teenager':student.age<27, 'older': student.age>=27}">{{student.age}}</td>-->
 
 

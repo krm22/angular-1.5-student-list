@@ -11,6 +11,9 @@ module.exports = mongoose.model('Student', new mongoose.Schema({
     age: {
         type: Number
     },
+    gitpseudo: {
+        type: String
+    },
     promotion: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Promotion'
