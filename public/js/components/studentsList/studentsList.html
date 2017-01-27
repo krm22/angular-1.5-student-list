@@ -13,8 +13,8 @@
             <input type="text" class="form-control" placeholder="Age" ng-model="$ctrl.student.age">
         </div>
 
-      <select ng-model="$ctrl.student.promotion" class="form-group col-md-2">
-                <option ng-repeat="promotion in $ctrl.promotion" value="{{student.promotion_.id}}">{{promotion.name}}</option>
+      <select ng-model="$ctrl.student.promotion.name" class="form-group col-md-2">
+                <option ng-repeat="promotion in $ctrl.promotion" value="{{promotion._id.name}}">{{promotion.name}}</option>
       </select>
 
         <div class="form-group col-md-2">
