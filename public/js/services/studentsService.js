@@ -8,7 +8,7 @@
                 return $http.get('/api/students')
             },
             gitUser(){
-               return $http.get('https://api.github.com/').then(function(res){
+               return $http.get('https://api.github.com/users').then(function(res){
                   console.log(res)
                })
 

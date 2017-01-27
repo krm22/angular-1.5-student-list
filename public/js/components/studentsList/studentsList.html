@@ -13,8 +13,8 @@
             <input type="text" class="form-control" placeholder="Age" ng-model="$ctrl.student.age">
         </div>
 
-      <select ng-model="$ctrl.student.promotion.name" class="form-group col-md-2">
-                <option ng-repeat="promotion in $ctrl.promotion" value="{{promotion._id.name}}">{{promotion.name}}</option>
+      <select ng-model="$ctrl.student.promotion" class="form-group col-md-2">
+                <option ng-repeat="promotion in $ctrl.promotion" value="{{promotion._id}}">{{promotion.name}}</option>
       </select>
 
         <div class="form-group col-md-2">
@@ -49,9 +49,9 @@
 
 
              <td>
-               <span ng-if="!student.editMode">{{student.promotion}}</span>
-                <select ng-if="student.editMode" class="col-md-8" ng-model="$ctrl.student.promotion">
-                    <option ng-repeat="promotion in $ctrl.promotion" value="{{student.promotion.name}}">{{promotion.name}}</option>
+               <span ng-if="!student.editMode">{{student.promotion.name}}</span>
+                <select ng-if="student.editMode" class="col-md-8" ng-model="student.promotion">
+                    <option ng-repeat="promotion in $ctrl.promotion" value="{{promotion._id}}">{{promotion.name}}</option>
                     <option value="">{{student.promotion.name}}</option>
               </select>
             </td>
@@ -61,7 +61,7 @@
 
               <td>
                   <button type="button" name="button" ng-click="$ctrl.delete(student, $index)">Delete</button>
-                  <button type="button" name="button" ng-click="$ctrl.edit(student)">{{ (student.editMode ? 'Validate' : 'Edit')}}</button>
+                  <button type="button" name="button" ng-click="$ctrl.edit(student, $index)">{{ (student.editMode ? 'Validate' : 'Edit')}}</button>
                   <button type="button" name="button" ng-if="student.editMode" ng-click="$ctrl.cancel(student, $index)"> Cancel </button>
             </td>
         </tr>

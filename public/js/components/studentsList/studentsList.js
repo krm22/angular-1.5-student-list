@@ -18,7 +18,7 @@
 
 
 
-            this.add = () => {
+            this.add = (student) => {
                 studentsService.save(this.student).then((res) => {
                     this.students.push(res.data)
                     this.student = {}
@@ -32,10 +32,11 @@
                 })
             }
 
-              this.edit = (student) => {
+              this.edit = (student, index) => {
                 if (student.editMode) {
                     studentsService.edit(student).then((res) => {
                         student.editMode = false
+                        this.students[index] = res.data
                     })
                 } else {
                   _previous[student._id] = angular.copy(student)
@@ -43,8 +44,8 @@
                 }
             }
 
-             this.cancel = (student, index) => {
-                this.students[index] = [student._id]
+              this.cancel = (student, index) => {
+                this.students[index] = _previous[student._id]
             }
 
         }]
